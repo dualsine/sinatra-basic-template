@@ -16,7 +16,10 @@ class MyApp < Sinatra::Base
     # params[:post]
   end
 
-  get '/global.js' do; coffee :global; end
+  get "/js/*.js" do
+    filename = params[:splat].first
+    coffee "../public/coffee/#{filename}".to_sym
+  end
 end
 
 MyApp.run!
