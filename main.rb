@@ -5,8 +5,8 @@ require 'haml'
 require 'coffee-script'
 
 class MyApp < Sinatra::Base
-	set :static, true
-  set :public, File.dirname(__FILE__) + '/static'
+  set :static, true
+  set :public_dir, File.dirname(__FILE__) + '/static'
 
   get '/' do
     haml :index
@@ -19,6 +19,11 @@ class MyApp < Sinatra::Base
   get "/js/*.js" do
     filename = params[:splat].first
     coffee "../public/coffee/#{filename}".to_sym
+  end
+  get '/css/*.css' do
+    content_type 'text/css', :charset => 'utf-8'
+    filename = params[:splat].first
+    sass filename.to_sym, :views => "./public/sass"
   end
 end
 
