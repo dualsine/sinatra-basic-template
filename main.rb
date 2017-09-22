@@ -14,6 +14,7 @@ class MyApp < Sinatra::Base
 
   get '/post/:post' do
     # params[:post]
+    haml :post
   end
 
   get "/js/*.js" do

@@ -1,12 +1,10 @@
 !!!
 %html
   %head
-    %title My Sinatra Website
-
-    %link{rel:'stylesheet', href:'/css/global.css'}
+    = haml :header
   %body
     %h1 Welcome
     %p
       Welcome to my website made with Sinatra and HAML
 
-    %script{src:'/js/global.js'}
+    = haml :footer
